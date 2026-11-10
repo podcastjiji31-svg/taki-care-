@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102b46">
+<title>TAKI CARE | 360° Health & Rehabilitation</title>
+<style>
+:root {
+  --navy:#102b46;
+  --teal:#22b8a5;
+  --light:#f2f7fa;
+  --text:#24384b;
+  --muted:#718397;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--light);color:var(--text);
+  font-family:Arial,sans-serif;
+}
+header{
+  background:var(--navy);color:white;padding:20px 6%;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:15px;
+}
+.brand{font-size:25px;font-weight:800;letter-spacing:1px}
+.brand span{color:#49d6c2}
+.tagline{font-size:11px;letter-spacing:2px;color:#c6e7e5;margin-top:5px}
+select{
+  padding:10px;border-radius:9px;border:1px solid #496176;
+  background:#193b58;color:white;
+}
+.hero{
+  padding:65px 7%;background:linear-gradient(120deg,#102b46,#176b78);
+  color:white;text-align:center;
+}
+.hero h1{font-size:clamp(29px,6vw,48px);margin:0 0 15px}
+.hero h1 span{color:#54ddc9}
+.hero p{max-width:650px;margin:0 auto 25px;line-height:1.8;color:#e0eeee}
+.btn{
+  display:inline-block;background:var(--teal);color:#062c38;
+  padding:13px 24px;border-radius:10px;font-weight:bold;
+  text-decoration:none;border:0;cursor:pointer;
+}
+main{max-width:1100px;margin:auto;padding:35px 18px}
+.section-title{text-align:center;margin-bottom:28px}
+.section-title h2{color:var(--navy);margin-bottom:8px}
+.section-title p{color:var(--muted)}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+.card{
+  background:white;padding:23px;border-radius:16px;
+  box-shadow:0 5px 20px #102b4610;border:1px solid #e5edf1;
+  transition:.2s;
+}
+.card:hover{transform:translateY(-4px)}
+.icon{font-size:32px;margin-bottom:12px}
+.card h3{color:var(--navy);margin:0 0 10px}
+.card p{font-size:14px;line-height:1.7;color:var(--muted)}
+.card a{color:#138f83;font-weight:bold;text-decoration:none}
+.about{
+  margin-top:40px;background:white;padding:28px;
+  border-radius:16px;line-height:1.8;text-align:center;
+}
+footer{
+  background:var(--navy);color:white;text-align:center;
+  padding:27px 15px;font-size:13px;line-height:1.8;
+}
+footer strong{color:#54ddc9}
+[dir="rtl"]{text-align:right}
+@media(max-width:550px){
+ header{padding:17px}
+ .hero{padding:48px 20px}
+ main{padding:28px 15px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="brand">TAKI <span>CARE</span></div>
+    <div class="tagline">360° HEALTH & REHABILITATION</div>
+  </div>
+  <select id="language" aria-label="Choose language">
+    <option value="en">English</option>
+    <option value="fr">Français</option>
+    <option value="ar">العربية</option>
+  </select>
+</header>
+
+<section class="hero">
+  <h1 id="heroTitle">Your Health, <span>Our Priority</span></h1>
+  <p id="heroText">An integrated multidisciplinary platform connecting healthcare, rehabilitation, science and professional education.</p>
+  <a href="#specialties" class="btn" id="heroButton">Explore our specialties</a>
+</section>
+
+<main>
+  <section id="specialties">
+    <div class="section-title">
+      <h2 id="sectionTitle">Our Specialties</h2>
+      <p id="sectionText">Discover our multidisciplinary healthcare services</p>
+    </div>
+
+    <div class="grid" id="cards">
+      <article class="card">
+        <div class="icon">🗣️</div>
+        <h3>Speech & Language Therapy</h3>
+        <p>Speech, language, voice, fluency and communication rehabilitation.</p>
+        <a href="#contact">Discover →</a>
+      </article>
+      <article class="card">
+        <div class="icon">🧠</div>
+        <h3>Neurorehabilitation</h3>
+        <p>Memory, attention, executive functions and cognitive rehabilitation.</p>
+        <a href="#contact">Discover →</a>
+      </article>
+      <article class="card">
+        <div class="icon">💚</div>
+        <h3>Psychology & Behavior</h3>
+        <p>Psychological support, emotional wellbeing and behavioral care.</p>
+        <a href="#contact">Discover →</a>
+      </article>
+      <article class="card">
+        <div class="icon">🩺</div>
+        <h3>Nursing & Clinical Care</h3>
+        <p>Health education, clinical care and patient support.</p>
+        <a href="#contact">Discover →</a>
+      </article>
+      <article class="card">
+        <div class="icon">🥤</div>
+        <h3>Swallowing & Voice</h3>
+        <p>Professional resources for swallowing and voice disorders.</p>
+        <a href="#contact">Discover →</a>
+      </article>
+      <article class="card">
+        <div class="icon">🎓</div>
+        <h3>Professional Academy</h3>
+        <p>Scientific resources, clinical learning and professional development.</p>
+        <a href="#contact">Discover →</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="about" id="contact">
+    <h2 id="aboutTitle">About TAKI CARE</h2>
+    <p id="aboutText">A multidisciplinary digital initiative dedicated to health, rehabilitation, innovation and knowledge sharing.</p>
+    <strong>Created by TAKI SOMIA ❤️</strong>
+  </section>
+</main>
+
+<footer>
+  <strong>TAKI CARE</strong><br>
+  360° HEALTH & REHABILITATION<br>
+  Created by TAKI SOMIA ❤️<br>
+  <span id="footerText">Health • Science • Innovation</span>
+  <br><small>Educational platform. Not a substitute for professional medical care.</small>
+</footer>
+
+<script>
+const translations = {
+en:{
+hero:'Your Health, <span>Our Priority</span>',
+desc:'An integrated multidisciplinary platform connecting healthcare, rehabilitation, science and professional education.',
+button:'Explore our specialties',
+title:'Our Specialties',
+sub:'Discover our multidisciplinary healthcare services',
+about:'About TAKI CARE',
+aboutDesc:'A multidisciplinary digital initiative dedicated to health, rehabilitation, innovation and knowledge sharing.',
+footer:'Health • Science • Innovation'
+},
+fr:{
+hero:'Votre santé, <span>Notre priorité</span>',
+desc:'Une plateforme pluridisciplinaire intégrant les soins, la rééducation, les sciences et la formation professionnelle.',
+button:'Découvrir nos spécialités',
+title:'Nos spécialités',
+sub:'Découvrez nos domaines de santé pluridisciplinaires',
+about:'À propos de TAKI CARE',
+aboutDesc:'Une initiative numérique pluridisciplinaire dédiée à la santé, à la rééducation, à l’innovation et au partage des connaissances.',
+footer:'Santé • Science • Innovation'
+},
+ar:{
+hero:'صحتك، <span>أولويتنا</span>',
+desc:'منصة رقمية متعددة التخصصات تجمع الرعاية الصحية وإعادة التأهيل والعلوم والتكوين المهني.',
+button:'اكتشف تخصصاتنا',
+title:'تخصصاتنا',
+sub:'اكتشف مجالات الرعاية الصحية متعددة التخصصات',
+about:'حول TAKI CARE',
+aboutDesc:'مبادرة رقمية متعددة التخصصات مخصصة للصحة وإعادة التأهيل والابتكار وتبادل المعرفة.',
+footer:'الصحة • العلم • الابتكار'
+}
+};
+
+const cards = {
+en:[
+['🗣️','Speech & Language Therapy','Speech, language, voice, fluency and communication rehabilitation.'],
+['🧠','Neurorehabilitation','Memory, attention, executive functions and cognitive rehabilitation.'],
+['💚','Psychology & Behavior','Psychological support, emotional wellbeing and behavioral care.'],
+['🩺','Nursing & Clinical Care','Health education, clinical care and patient support.'],
+['🥤','Swallowing & Voice','Professional resources for swallowing and voice disorders.'],
+['🎓','Professional Academy','Scientific resources, clinical learning and professional development.']
+],
+fr:[
+['🗣️','Orthophonie','Rééducation de la parole, du langage, de la voix et de la communication.'],
+['🧠','Neurorééducation','Mémoire, attention, fonctions exécutives et rééducation cognitive.'],
+['💚','Psychologie & comportement','Accompagnement psychologique et soutien émotionnel.'],
+['🩺','Soins infirmiers','Éducation sanitaire, soins cliniques et accompagnement.'],
+['🥤','Déglutition & voix','Ressources professionnelles sur les troubles de la déglutition et de la voix.'],
+['🎓','Académie professionnelle','Ressources scientifiques, apprentissage clinique et formation continue.']
+],
+ar:[
+['🗣️','الأرطوفونيا','تأهيل النطق واللغة والصوت والتواصل.'],
+['🧠','التأهيل العصبي','الذاكرة والانتباه والوظائف التنفيذية والتأهيل المعرفي.'],
+['💚','علم النفس والسلوك','الدعم النفسي والانفعالي والتكفل السلوكي.'],
+['🩺','التمريض والرعاية السريرية','التثقيف الصحي والرعاية ومرافقة المرضى.'],
+['🥤','البلع والصوت','موارد مهنية حول اضطرابات البلع والصوت.'],
+['🎓','الأكاديمية المهنية','الموارد العلمية والتعلم السريري والتكوين المستمر.']
+]
+};
+
+function changeLanguage(lang){
+ const t=translations[lang];
+ document.documentElement.lang=lang;
+ document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+ document.getElementById('heroTitle').innerHTML=t.hero;
+ document.getElementById('heroText').textContent=t.desc;
+ document.getElementById('heroButton').textContent=t.button;
+ document.getElementById('sectionTitle').textContent=t.title;
+ document.getElementById('sectionText').textContent=t.sub;
+ document.getElementById('aboutTitle').textContent=t.about;
+ document.getElementById('aboutText').textContent=t.aboutDesc;
+ document.getElementById('footerText').textContent=t.footer;
+ document.getElementById('cards').innerHTML=cards[lang].map(c=>
+ `<article class="card"><div class="icon">${c[0]}</div><h3>${c[1]}</h3><p>${c[2]}</p><a href="#contact">${lang==='ar'?'اكتشف ←':lang==='fr'?'Découvrir →':'Discover →'}</a></article>`
+ ).join('');
+}
+document.getElementById('language').addEventListener('change',e=>changeLanguage(e.target.value));
+</script>
+</body>
+</html>
