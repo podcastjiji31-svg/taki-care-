@@ -4,7 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TAKI CARE | 360° Health & Rehabilitation</title>
+<meta name="theme-color" content="#087f8c">
+<meta name="description" content="TAKI CARE - منصة الصحة والتأهيل والتكوين الطبي">
+<link rel="manifest" href="./manifest.webmanifest">
+<title>TAKI CARE | 360° HEALTH & REHABILITATION</title>
+
 <style>
 :root {
   --navy:#102b46;
@@ -47,7 +51,8 @@ select{
   display:flex;
   align-items:center;
   color:white;
-  background:linear-gradient(90deg,#102b46ee,#102b4680),
+  background:
+  linear-gradient(90deg,#102b46ee,#102b4680),
   url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1400') center/cover;
 }
 .hero-content{max-width:700px}
@@ -112,6 +117,20 @@ footer{
   padding:25px;
 }
 footer strong{color:var(--teal)}
+.install-area{
+  text-align:center;
+  padding:20px;
+}
+.install-btn{
+  display:none;
+  border:0;
+  background:var(--teal);
+  color:white;
+  font-size:16px;
+  padding:13px 25px;
+  border-radius:10px;
+  cursor:pointer;
+}
 @media(max-width:700px){
   header{justify-content:center}
   nav{justify-content:center}
@@ -121,12 +140,15 @@ footer strong{color:var(--teal)}
 }
 </style>
 </head>
+
 <body>
 
 <header>
-  <div class="logo">TAKI <span>CARE</span>
+  <div class="logo">
+    TAKI <span>CARE</span>
     <small>360° HEALTH & REHABILITATION</small>
   </div>
+
   <nav>
     <a href="#home" data-ar="الرئيسية" data-fr="Accueil" data-en="Home">الرئيسية</a>
     <a href="#about" data-ar="من نحن" data-fr="À propos" data-en="About">من نحن</a>
@@ -135,6 +157,7 @@ footer strong{color:var(--teal)}
     <a href="#library" data-ar="المكتبة" data-fr="Bibliothèque" data-en="Library">المكتبة</a>
     <a href="#contact" data-ar="اتصل بنا" data-fr="Contact" data-en="Contact">اتصل بنا</a>
   </nav>
+
   <select id="language" aria-label="Language">
     <option value="ar">العربية</option>
     <option value="fr">Français</option>
@@ -144,10 +167,12 @@ footer strong{color:var(--teal)}
 
 <section class="hero" id="home">
   <div class="hero-content">
-    <h1>TAKI CARE<br>
-    <span data-ar="رعاية، معرفة، وتأهيل"
-    data-fr="Soins, savoir et réadaptation"
-    data-en="Care, knowledge and rehabilitation">رعاية، معرفة، وتأهيل</span></h1>
+    <h1>
+      TAKI CARE<br>
+      <span data-ar="رعاية، معرفة، وتأهيل"
+      data-fr="Soins, savoir et réadaptation"
+      data-en="Care, knowledge and rehabilitation">رعاية، معرفة، وتأهيل</span>
+    </h1>
     <p data-ar="منصة علمية وتعليمية متخصصة في الصحة والطب والتأهيل والتكوين المهني."
     data-fr="Une plateforme scientifique dédiée à la santé, à la médecine et à la réadaptation."
     data-en="A scientific platform dedicated to health, medicine and rehabilitation.">
@@ -187,9 +212,7 @@ footer strong{color:var(--teal)}
       <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=700" alt="Speech therapy">
       <div class="card-content">
         <h3 data-ar="الأرطوفونيا" data-fr="Orthophonie" data-en="Speech Therapy">الأرطوفونيا</h3>
-        <p data-ar="اللغة والنطق والصوت واضطرابات التواصل."
-        data-fr="Langage, parole et communication."
-        data-en="Language, speech and communication disorders.">اللغة والنطق والصوت واضطرابات التواصل.</p>
+        <p data-ar="اللغة والنطق والصوت واضطرابات التواصل." data-fr="Langage, parole et communication." data-en="Language, speech and communication disorders.">اللغة والنطق والصوت واضطرابات التواصل.</p>
       </div>
     </article>
 
@@ -197,9 +220,7 @@ footer strong{color:var(--teal)}
       <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700" alt="Rehabilitation">
       <div class="card-content">
         <h3 data-ar="التأهيل العصبي والمعرفي" data-fr="Réadaptation neurocognitive" data-en="Neurocognitive Rehabilitation">التأهيل العصبي والمعرفي</h3>
-        <p data-ar="دعم القدرات الحركية والمعرفية."
-        data-fr="Soutien des fonctions motrices et cognitives."
-        data-en="Supporting motor and cognitive abilities.">دعم القدرات الحركية والمعرفية.</p>
+        <p data-ar="دعم القدرات الحركية والمعرفية." data-fr="Soutien des fonctions motrices et cognitives." data-en="Supporting motor and cognitive abilities.">دعم القدرات الحركية والمعرفية.</p>
       </div>
     </article>
 
@@ -207,9 +228,7 @@ footer strong{color:var(--teal)}
       <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=700" alt="Psychology">
       <div class="card-content">
         <h3 data-ar="علم النفس والسلوك" data-fr="Psychologie et comportement" data-en="Psychology and Behavior">علم النفس والسلوك</h3>
-        <p data-ar="الصحة النفسية والسلوك والتطور العاطفي."
-        data-fr="Santé mentale et comportement."
-        data-en="Mental health and behavior.">الصحة النفسية والسلوك والتطور العاطفي.</p>
+        <p data-ar="الصحة النفسية والسلوك والتطور العاطفي." data-fr="Santé mentale et comportement." data-en="Mental health and behavior.">الصحة النفسية والسلوك والتطور العاطفي.</p>
       </div>
     </article>
 
@@ -217,9 +236,7 @@ footer strong{color:var(--teal)}
       <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=700" alt="Nursing">
       <div class="card-content">
         <h3 data-ar="التمريض والرعاية السريرية" data-fr="Soins infirmiers" data-en="Nursing and Clinical Care">التمريض والرعاية السريرية</h3>
-        <p data-ar="الرعاية والوقاية ومرافقة المرضى."
-        data-fr="Soins, prévention et accompagnement."
-        data-en="Care, prevention and patient support.">الرعاية والوقاية ومرافقة المرضى.</p>
+        <p data-ar="الرعاية والوقاية ومرافقة المرضى." data-fr="Soins, prévention et accompagnement." data-en="Care, prevention and patient support.">الرعاية والوقاية ومرافقة المرضى.</p>
       </div>
     </article>
 
@@ -227,9 +244,7 @@ footer strong{color:var(--teal)}
       <img src="https://images.unsplash.com/photo-1576091160501-bbe57469278b?w=700" alt="Medical rehabilitation">
       <div class="card-content">
         <h3 data-ar="إعادة التأهيل الطبي" data-fr="Réadaptation médicale" data-en="Medical Rehabilitation">إعادة التأهيل الطبي</h3>
-        <p data-ar="استعادة القدرات الوظيفية وتحسين جودة الحياة."
-        data-fr="Récupération fonctionnelle et qualité de vie."
-        data-en="Functional recovery and quality of life.">استعادة القدرات الوظيفية وتحسين جودة الحياة.</p>
+        <p data-ar="استعادة القدرات الوظيفية وتحسين جودة الحياة." data-fr="Récupération fonctionnelle et qualité de vie." data-en="Functional recovery and quality of life.">استعادة القدرات الوظيفية وتحسين جودة الحياة.</p>
       </div>
     </article>
 
@@ -237,9 +252,7 @@ footer strong{color:var(--teal)}
       <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=700" alt="Training">
       <div class="card-content">
         <h3 data-ar="الأكاديمية المهنية" data-fr="Académie professionnelle" data-en="Professional Academy">الأكاديمية المهنية</h3>
-        <p data-ar="التعلم المستمر وتطوير المهارات المهنية."
-        data-fr="Formation continue et compétences professionnelles."
-        data-en="Continuing education and professional skills.">التعلم المستمر وتطوير المهارات المهنية.</p>
+        <p data-ar="التعلم المستمر وتطوير المهارات المهنية." data-fr="Formation continue et compétences professionnelles." data-en="Continuing education and professional skills.">التعلم المستمر وتطوير المهارات المهنية.</p>
       </div>
     </article>
   </div>
@@ -275,7 +288,12 @@ footer strong{color:var(--teal)}
   data-en="Together for better health">معًا من أجل صحة ومعرفة أفضل</h2>
   <p>TAKI CARE — 360° HEALTH &amp; REHABILITATION</p>
 </section>
-</main>
+
+<div class="install-area">
+  <button class="install-btn" id="installButton">
+    تثبيت تطبيق TAKI CARE
+  </button>
+</div>
 
 <footer>
   © 2026 TAKI CARE — All rights reserved.
@@ -283,15 +301,54 @@ footer strong{color:var(--teal)}
 </footer>
 
 <script>
-const language=document.getElementById("language");
-language.addEventListener("change",function(){
-  const lang=this.value;
-  document.documentElement.lang=lang;
-  document.documentElement.dir=lang==="ar"?"rtl":"ltr";
-  document.querySelectorAll("[data-"+lang+"]").forEach(function(element){
-    element.textContent=element.getAttribute("data-"+lang);
+const language = document.getElementById("language");
+
+language.addEventListener("change", function(){
+  const lang = this.value;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+  document.querySelectorAll("[data-" + lang + "]").forEach(function(element){
+    element.textContent = element.getAttribute("data-" + lang);
   });
 });
+
+// تسجيل خدمة العمل دون اتصال
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function(){
+    navigator.serviceWorker.register("./sw.js")
+      .then(function(){
+        console.log("TAKI CARE service worker registered");
+      })
+      .catch(function(error){
+        console.error("Service worker error:", error);
+      });
+  });
+}
+
+// زر تثبيت التطبيق
+let deferredPrompt;
+const installButton = document.getElementById("installButton");
+
+window.addEventListener("beforeinstallprompt", function(event){
+  event.preventDefault();
+  deferredPrompt = event;
+  installButton.style.display = "inline-block";
+});
+
+installButton.addEventListener("click", async function(){
+  if (!deferredPrompt) return;
+
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  installButton.style.display = "none";
+});
+
+window.addEventListener("appinstalled", function(){
+  installButton.style.display = "none";
+});
 </script>
+
 </body>
 </html>
