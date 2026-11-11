@@ -1,244 +1,297 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#102b46">
 <title>TAKI CARE | 360° Health & Rehabilitation</title>
 <style>
 :root {
   --navy:#102b46;
-  --teal:#22b8a5;
-  --light:#f2f7fa;
-  --text:#24384b;
-  --muted:#718397;
-  --white:#fff;
+  --teal:#20b9a5;
+  --light:#f3f8fb;
 }
-*{box-sizing:border-box}
+*{box-sizing:border-box;scroll-behavior:smooth}
 body{
-  margin:0;background:var(--light);color:var(--text);
-  font-family:Arial,sans-serif;
+  margin:0;
+  font-family:Arial,Tahoma,sans-serif;
+  background:var(--light);
+  color:#24384b;
+  line-height:1.7;
 }
 header{
-  background:var(--navy);color:white;padding:20px 6%;
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:15px;
+  background:var(--navy);
+  color:white;
+  padding:18px 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
 }
-.brand{font-size:25px;font-weight:800;letter-spacing:1px}
-.brand span{color:#49d6c2}
-.tagline{font-size:11px;letter-spacing:2px;color:#c6e7e5;margin-top:5px}
+.logo{font-size:27px;font-weight:bold}
+.logo span{color:var(--teal)}
+.logo small{display:block;font-size:10px}
+nav{display:flex;gap:13px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-size:13px}
+nav a:hover{color:var(--teal)}
 select{
-  padding:10px;border-radius:9px;border:1px solid #496176;
-  background:#193b58;color:white;
+  padding:9px;
+  border-radius:8px;
+  background:#193b58;
+  color:white;
 }
 .hero{
-  padding:65px 7%;background:linear-gradient(120deg,#102b46,#176b78);
-  color:white;text-align:center;
+  min-height:450px;
+  padding:75px 8%;
+  display:flex;
+  align-items:center;
+  color:white;
+  background:linear-gradient(90deg,#102b46ee,#102b4680),
+  url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1400') center/cover;
 }
-.hero h1{font-size:clamp(29px,6vw,48px);margin:0 0 15px}
-.hero h1 span{color:#54ddc9}
-.hero p{max-width:650px;margin:0 auto 25px;line-height:1.8;color:#e0eeee}
+.hero-content{max-width:700px}
+.hero h1{font-size:48px;line-height:1.3}
+.hero h1 span{color:#43d5c0}
+.hero p{font-size:18px}
 .btn{
-  display:inline-block;background:var(--teal);color:#062c38;
-  padding:13px 24px;border-radius:10px;font-weight:bold;
-  text-decoration:none;border:0;cursor:pointer;
+  display:inline-block;
+  background:var(--teal);
+  color:white;
+  padding:12px 25px;
+  border-radius:9px;
+  text-decoration:none;
+  margin-top:15px;
 }
-main{max-width:1100px;margin:auto;padding:35px 18px}
-.section-title{text-align:center;margin-bottom:28px}
-.section-title h2{color:var(--navy);margin-bottom:8px}
-.section-title p{color:var(--muted)}
+section{padding:65px 7%}
+.title{text-align:center;margin-bottom:35px}
+.title h2{color:var(--navy);font-size:30px}
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  align-items:center;
+}
+.about img{
+  width:100%;
+  border-radius:18px;
+  height:300px;
+  object-fit:cover;
+}
 .grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:22px;
 }
 .card{
-  background:white;padding:23px;border-radius:16px;
-  box-shadow:0 5px 20px #102b4610;border:1px solid #e5edf1;
-  transition:.2s;
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 8px 25px #102b4615;
 }
-.card:hover{transform:translateY(-4px)}
-.icon{font-size:32px;margin-bottom:12px}
-.card h3{color:var(--navy);margin:0 0 10px}
-.card p{font-size:14px;line-height:1.7;color:var(--muted)}
-.card a{color:#138f83;font-weight:bold;text-decoration:none}
-.about{
-  margin-top:40px;background:white;padding:28px;
-  border-radius:16px;line-height:1.8;text-align:center;
+.card img{width:100%;height:165px;object-fit:cover}
+.card-content{padding:18px}
+.card h3{color:var(--navy)}
+.card p{color:#718397;font-size:14px}
+.feature{
+  background:#e8f5f4;
+  padding:35px;
+  border-radius:18px;
+  text-align:center;
+}
+.feature h2{color:var(--navy)}
+.contact{
+  background:var(--navy);
+  color:white;
+  text-align:center;
 }
 footer{
-  background:var(--navy);color:white;text-align:center;
-  padding:27px 15px;font-size:13px;line-height:1.8;
+  background:#091d30;
+  color:white;
+  text-align:center;
+  padding:25px;
 }
-footer strong{color:#54ddc9}
-[dir="rtl"]{text-align:right}
-@media(max-width:550px){
- header{padding:17px}
- .hero{padding:48px 20px}
- main{padding:28px 15px}
+footer strong{color:var(--teal)}
+@media(max-width:700px){
+  header{justify-content:center}
+  nav{justify-content:center}
+  .hero{padding:55px 7%}
+  .hero h1{font-size:36px}
+  .about{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
 <header>
-  <div>
-    <div class="brand">TAKI <span>CARE</span></div>
-    <div class="tagline">360° HEALTH & REHABILITATION</div>
+  <div class="logo">TAKI <span>CARE</span>
+    <small>360° HEALTH & REHABILITATION</small>
   </div>
-  <select id="language" aria-label="Choose language">
-    <option value="en">English</option>
-    <option value="fr">Français</option>
+  <nav>
+    <a href="#home" data-ar="الرئيسية" data-fr="Accueil" data-en="Home">الرئيسية</a>
+    <a href="#about" data-ar="من نحن" data-fr="À propos" data-en="About">من نحن</a>
+    <a href="#specialties" data-ar="التخصصات" data-fr="Spécialités" data-en="Specialties">التخصصات</a>
+    <a href="#training" data-ar="التكوين" data-fr="Formation" data-en="Training">التكوين</a>
+    <a href="#library" data-ar="المكتبة" data-fr="Bibliothèque" data-en="Library">المكتبة</a>
+    <a href="#contact" data-ar="اتصل بنا" data-fr="Contact" data-en="Contact">اتصل بنا</a>
+  </nav>
+  <select id="language" aria-label="Language">
     <option value="ar">العربية</option>
+    <option value="fr">Français</option>
+    <option value="en">English</option>
   </select>
 </header>
 
-<section class="hero">
-  <h1 id="heroTitle">Your Health, <span>Our Priority</span></h1>
-  <p id="heroText">An integrated multidisciplinary platform connecting healthcare, rehabilitation, science and professional education.</p>
-  <a href="#specialties" class="btn" id="heroButton">Explore our specialties</a>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>TAKI CARE<br>
+    <span data-ar="رعاية، معرفة، وتأهيل"
+    data-fr="Soins, savoir et réadaptation"
+    data-en="Care, knowledge and rehabilitation">رعاية، معرفة، وتأهيل</span></h1>
+    <p data-ar="منصة علمية وتعليمية متخصصة في الصحة والطب والتأهيل والتكوين المهني."
+    data-fr="Une plateforme scientifique dédiée à la santé, à la médecine et à la réadaptation."
+    data-en="A scientific platform dedicated to health, medicine and rehabilitation.">
+    منصة علمية وتعليمية متخصصة في الصحة والطب والتأهيل والتكوين المهني.</p>
+    <a href="#specialties" class="btn"
+    data-ar="اكتشف تخصصاتنا" data-fr="Nos spécialités"
+    data-en="Explore specialties">اكتشف تخصصاتنا</a>
+  </div>
 </section>
 
-<main>
-  <section id="specialties">
-    <div class="section-title">
-      <h2 id="sectionTitle">Our Specialties</h2>
-      <p id="sectionText">Discover our multidisciplinary healthcare services</p>
+<section id="about">
+  <div class="about">
+    <div>
+      <h2 data-ar="مرحبًا بكم في TAKI CARE"
+      data-fr="Bienvenue chez TAKI CARE"
+      data-en="Welcome to TAKI CARE">مرحبًا بكم في TAKI CARE</h2>
+      <p data-ar="هدفنا نشر الثقافة الصحية وتوفير محتوى تعليمي في المجالات الطبية وشبه الطبية والتأهيل والتطوير المهني."
+      data-fr="Notre objectif est de diffuser la culture de santé et des ressources éducatives médicales."
+      data-en="Our goal is to promote health awareness and provide educational medical resources.">
+      هدفنا نشر الثقافة الصحية وتوفير محتوى تعليمي في المجالات الطبية وشبه الطبية والتأهيل والتطوير المهني.</p>
     </div>
+    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900" alt="Healthcare">
+  </div>
+</section>
 
-    <div class="grid" id="cards">
-      <article class="card">
-        <div class="icon">🗣️</div>
-        <h3>Speech & Language Therapy</h3>
-        <p>Speech, language, voice, fluency and communication rehabilitation.</p>
-        <a href="#contact">Discover →</a>
-      </article>
-      <article class="card">
-        <div class="icon">🧠</div>
-        <h3>Neurorehabilitation</h3>
-        <p>Memory, attention, executive functions and cognitive rehabilitation.</p>
-        <a href="#contact">Discover →</a>
-      </article>
-      <article class="card">
-        <div class="icon">💚</div>
-        <h3>Psychology & Behavior</h3>
-        <p>Psychological support, emotional wellbeing and behavioral care.</p>
-        <a href="#contact">Discover →</a>
-      </article>
-      <article class="card">
-        <div class="icon">🩺</div>
-        <h3>Nursing & Clinical Care</h3>
-        <p>Health education, clinical care and patient support.</p>
-        <a href="#contact">Discover →</a>
-      </article>
-      <article class="card">
-        <div class="icon">🥤</div>
-        <h3>Swallowing & Voice</h3>
-        <p>Professional resources for swallowing and voice disorders.</p>
-        <a href="#contact">Discover →</a>
-      </article>
-      <article class="card">
-        <div class="icon">🎓</div>
-        <h3>Professional Academy</h3>
-        <p>Scientific resources, clinical learning and professional development.</p>
-        <a href="#contact">Discover →</a>
-      </article>
-    </div>
-  </section>
+<section id="specialties">
+  <div class="title">
+    <h2 data-ar="مجالاتنا وتخصصاتنا"
+    data-fr="Nos spécialités" data-en="Our Specialties">مجالاتنا وتخصصاتنا</h2>
+    <p data-ar="معرفة متكاملة لخدمة الصحة والإنسان"
+    data-fr="Le savoir au service de la santé"
+    data-en="Knowledge serving health and people">معرفة متكاملة لخدمة الصحة والإنسان</p>
+  </div>
 
-  <section class="about" id="contact">
-    <h2 id="aboutTitle">About TAKI CARE</h2>
-    <p id="aboutText">A multidisciplinary digital initiative dedicated to health, rehabilitation, innovation and knowledge sharing.</p>
-    <strong>Created by TAKI SOMIA ❤️</strong>
-  </section>
+  <div class="grid">
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=700" alt="Speech therapy">
+      <div class="card-content">
+        <h3 data-ar="الأرطوفونيا" data-fr="Orthophonie" data-en="Speech Therapy">الأرطوفونيا</h3>
+        <p data-ar="اللغة والنطق والصوت واضطرابات التواصل."
+        data-fr="Langage, parole et communication."
+        data-en="Language, speech and communication disorders.">اللغة والنطق والصوت واضطرابات التواصل.</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700" alt="Rehabilitation">
+      <div class="card-content">
+        <h3 data-ar="التأهيل العصبي والمعرفي" data-fr="Réadaptation neurocognitive" data-en="Neurocognitive Rehabilitation">التأهيل العصبي والمعرفي</h3>
+        <p data-ar="دعم القدرات الحركية والمعرفية."
+        data-fr="Soutien des fonctions motrices et cognitives."
+        data-en="Supporting motor and cognitive abilities.">دعم القدرات الحركية والمعرفية.</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=700" alt="Psychology">
+      <div class="card-content">
+        <h3 data-ar="علم النفس والسلوك" data-fr="Psychologie et comportement" data-en="Psychology and Behavior">علم النفس والسلوك</h3>
+        <p data-ar="الصحة النفسية والسلوك والتطور العاطفي."
+        data-fr="Santé mentale et comportement."
+        data-en="Mental health and behavior.">الصحة النفسية والسلوك والتطور العاطفي.</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=700" alt="Nursing">
+      <div class="card-content">
+        <h3 data-ar="التمريض والرعاية السريرية" data-fr="Soins infirmiers" data-en="Nursing and Clinical Care">التمريض والرعاية السريرية</h3>
+        <p data-ar="الرعاية والوقاية ومرافقة المرضى."
+        data-fr="Soins, prévention et accompagnement."
+        data-en="Care, prevention and patient support.">الرعاية والوقاية ومرافقة المرضى.</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1576091160501-bbe57469278b?w=700" alt="Medical rehabilitation">
+      <div class="card-content">
+        <h3 data-ar="إعادة التأهيل الطبي" data-fr="Réadaptation médicale" data-en="Medical Rehabilitation">إعادة التأهيل الطبي</h3>
+        <p data-ar="استعادة القدرات الوظيفية وتحسين جودة الحياة."
+        data-fr="Récupération fonctionnelle et qualité de vie."
+        data-en="Functional recovery and quality of life.">استعادة القدرات الوظيفية وتحسين جودة الحياة.</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=700" alt="Training">
+      <div class="card-content">
+        <h3 data-ar="الأكاديمية المهنية" data-fr="Académie professionnelle" data-en="Professional Academy">الأكاديمية المهنية</h3>
+        <p data-ar="التعلم المستمر وتطوير المهارات المهنية."
+        data-fr="Formation continue et compétences professionnelles."
+        data-en="Continuing education and professional skills.">التعلم المستمر وتطوير المهارات المهنية.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="training">
+  <div class="feature">
+    <h2 data-ar="التكوين والتعليم الطبي"
+    data-fr="Formation et éducation médicale"
+    data-en="Medical Training and Education">التكوين والتعليم الطبي</h2>
+    <p data-ar="مساحة للتعلم المستمر ومراجعة المعلومات العلمية وتطوير المهارات الصحية."
+    data-fr="Un espace pour l'apprentissage continu et le développement des compétences."
+    data-en="A space for continuous learning and healthcare skills development.">
+    مساحة للتعلم المستمر ومراجعة المعلومات العلمية وتطوير المهارات الصحية.</p>
+  </div>
+</section>
+
+<section id="library">
+  <div class="feature">
+    <h2 data-ar="المكتبة العلمية"
+    data-fr="Bibliothèque scientifique"
+    data-en="Scientific Library">المكتبة العلمية</h2>
+    <p data-ar="قريبًا: مقالات وملخصات ومراجع تعليمية لدعم المعرفة الصحية."
+    data-fr="Bientôt : articles, résumés et références éducatives."
+    data-en="Coming soon: articles, summaries and educational references.">
+    قريبًا: مقالات وملخصات ومراجع تعليمية لدعم المعرفة الصحية.</p>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2 data-ar="معًا من أجل صحة ومعرفة أفضل"
+  data-fr="Ensemble pour une meilleure santé"
+  data-en="Together for better health">معًا من أجل صحة ومعرفة أفضل</h2>
+  <p>TAKI CARE — 360° HEALTH &amp; REHABILITATION</p>
+</section>
 </main>
 
 <footer>
-  <strong>TAKI CARE</strong><br>
-  360° HEALTH & REHABILITATION<br>
-  Created by TAKI SOMIA ❤️<br>
-  <span id="footerText">Health • Science • Innovation</span>
-  <br><small>Educational platform. Not a substitute for professional medical care.</small>
+  © 2026 TAKI CARE — All rights reserved.
+  <br><strong>Created by TAKI SOMIA</strong>
 </footer>
 
 <script>
-const translations = {
-en:{
-hero:'Your Health, <span>Our Priority</span>',
-desc:'An integrated multidisciplinary platform connecting healthcare, rehabilitation, science and professional education.',
-button:'Explore our specialties',
-title:'Our Specialties',
-sub:'Discover our multidisciplinary healthcare services',
-about:'About TAKI CARE',
-aboutDesc:'A multidisciplinary digital initiative dedicated to health, rehabilitation, innovation and knowledge sharing.',
-footer:'Health • Science • Innovation'
-},
-fr:{
-hero:'Votre santé, <span>Notre priorité</span>',
-desc:'Une plateforme pluridisciplinaire intégrant les soins, la rééducation, les sciences et la formation professionnelle.',
-button:'Découvrir nos spécialités',
-title:'Nos spécialités',
-sub:'Découvrez nos domaines de santé pluridisciplinaires',
-about:'À propos de TAKI CARE',
-aboutDesc:'Une initiative numérique pluridisciplinaire dédiée à la santé, à la rééducation, à l’innovation et au partage des connaissances.',
-footer:'Santé • Science • Innovation'
-},
-ar:{
-hero:'صحتك، <span>أولويتنا</span>',
-desc:'منصة رقمية متعددة التخصصات تجمع الرعاية الصحية وإعادة التأهيل والعلوم والتكوين المهني.',
-button:'اكتشف تخصصاتنا',
-title:'تخصصاتنا',
-sub:'اكتشف مجالات الرعاية الصحية متعددة التخصصات',
-about:'حول TAKI CARE',
-aboutDesc:'مبادرة رقمية متعددة التخصصات مخصصة للصحة وإعادة التأهيل والابتكار وتبادل المعرفة.',
-footer:'الصحة • العلم • الابتكار'
-}
-};
-
-const cards = {
-en:[
-['🗣️','Speech & Language Therapy','Speech, language, voice, fluency and communication rehabilitation.'],
-['🧠','Neurorehabilitation','Memory, attention, executive functions and cognitive rehabilitation.'],
-['💚','Psychology & Behavior','Psychological support, emotional wellbeing and behavioral care.'],
-['🩺','Nursing & Clinical Care','Health education, clinical care and patient support.'],
-['🥤','Swallowing & Voice','Professional resources for swallowing and voice disorders.'],
-['🎓','Professional Academy','Scientific resources, clinical learning and professional development.']
-],
-fr:[
-['🗣️','Orthophonie','Rééducation de la parole, du langage, de la voix et de la communication.'],
-['🧠','Neurorééducation','Mémoire, attention, fonctions exécutives et rééducation cognitive.'],
-['💚','Psychologie & comportement','Accompagnement psychologique et soutien émotionnel.'],
-['🩺','Soins infirmiers','Éducation sanitaire, soins cliniques et accompagnement.'],
-['🥤','Déglutition & voix','Ressources professionnelles sur les troubles de la déglutition et de la voix.'],
-['🎓','Académie professionnelle','Ressources scientifiques, apprentissage clinique et formation continue.']
-],
-ar:[
-['🗣️','الأرطوفونيا','تأهيل النطق واللغة والصوت والتواصل.'],
-['🧠','التأهيل العصبي','الذاكرة والانتباه والوظائف التنفيذية والتأهيل المعرفي.'],
-['💚','علم النفس والسلوك','الدعم النفسي والانفعالي والتكفل السلوكي.'],
-['🩺','التمريض والرعاية السريرية','التثقيف الصحي والرعاية ومرافقة المرضى.'],
-['🥤','البلع والصوت','موارد مهنية حول اضطرابات البلع والصوت.'],
-['🎓','الأكاديمية المهنية','الموارد العلمية والتعلم السريري والتكوين المستمر.']
-]
-};
-
-function changeLanguage(lang){
- const t=translations[lang];
- document.documentElement.lang=lang;
- document.documentElement.dir=lang==='ar'?'rtl':'ltr';
- document.getElementById('heroTitle').innerHTML=t.hero;
- document.getElementById('heroText').textContent=t.desc;
- document.getElementById('heroButton').textContent=t.button;
- document.getElementById('sectionTitle').textContent=t.title;
- document.getElementById('sectionText').textContent=t.sub;
- document.getElementById('aboutTitle').textContent=t.about;
- document.getElementById('aboutText').textContent=t.aboutDesc;
- document.getElementById('footerText').textContent=t.footer;
- document.getElementById('cards').innerHTML=cards[lang].map(c=>
- `<article class="card"><div class="icon">${c[0]}</div><h3>${c[1]}</h3><p>${c[2]}</p><a href="#contact">${lang==='ar'?'اكتشف ←':lang==='fr'?'Découvrir →':'Discover →'}</a></article>`
- ).join('');
-}
-document.getElementById('language').addEventListener('change',e=>changeLanguage(e.target.value));
+const language=document.getElementById("language");
+language.addEventListener("change",function(){
+  const lang=this.value;
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+  document.querySelectorAll("[data-"+lang+"]").forEach(function(element){
+    element.textContent=element.getAttribute("data-"+lang);
+  });
+});
 </script>
 </body>
 </html>
