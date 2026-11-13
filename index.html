@@ -1,354 +1,283 @@
 
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#087f8c">
-<meta name="description" content="TAKI CARE - منصة الصحة والتأهيل والتكوين الطبي">
-<link rel="manifest" href="./manifest.webmanifest">
-<title>TAKI CARE | 360° HEALTH & REHABILITATION</title>
-
+<!-- TAKI AI - Professional Workspace -->
 <style>
-:root {
-  --navy:#102b46;
-  --teal:#20b9a5;
-  --light:#f3f8fb;
+#taki-ai {
+  direction: rtl;
+  font-family: Arial, sans-serif;
+  background: #f1f7fa;
+  padding: 35px 5%;
+  color: #17334b;
 }
-*{box-sizing:border-box;scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:Arial,Tahoma,sans-serif;
-  background:var(--light);
-  color:#24384b;
-  line-height:1.7;
+#taki-ai .panel {
+  max-width: 950px;
+  margin: 20px auto;
+  padding: 25px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px #102b4615;
 }
-header{
-  background:var(--navy);
-  color:white;
-  padding:18px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:15px;
+#taki-ai h2, #taki-ai h3 { color: #102b46; }
+#taki-ai input, #taki-ai select, #taki-ai textarea {
+  width: 100%;
+  padding: 13px;
+  margin: 8px 0 15px;
+  border: 1px solid #ccd9e2;
+  border-radius: 8px;
+  font-size: 15px;
+  box-sizing: border-box;
 }
-.logo{font-size:27px;font-weight:bold}
-.logo span{color:var(--teal)}
-.logo small{display:block;font-size:10px}
-nav{display:flex;gap:13px;flex-wrap:wrap}
-nav a{color:white;text-decoration:none;font-size:13px}
-nav a:hover{color:var(--teal)}
-select{
-  padding:9px;
-  border-radius:8px;
-  background:#193b58;
-  color:white;
+#taki-ai textarea { min-height: 120px; }
+#taki-ai button {
+  background: #159e91;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  padding: 13px 20px;
+  cursor: pointer;
+  margin: 5px;
 }
-.hero{
-  min-height:450px;
-  padding:75px 8%;
-  display:flex;
-  align-items:center;
-  color:white;
-  background:
-  linear-gradient(90deg,#102b46ee,#102b4680),
-  url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1400') center/cover;
+#taki-ai button.secondary { background: #173b59; }
+#taki-ai .patient-item {
+  padding: 15px;
+  border: 1px solid #dce7ed;
+  border-radius: 10px;
+  margin: 10px 0;
 }
-.hero-content{max-width:700px}
-.hero h1{font-size:48px;line-height:1.3}
-.hero h1 span{color:#43d5c0}
-.hero p{font-size:18px}
-.btn{
-  display:inline-block;
-  background:var(--teal);
-  color:white;
-  padding:12px 25px;
-  border-radius:9px;
-  text-decoration:none;
-  margin-top:15px;
+#taki-ai .hidden { display: none; }
+#taki-ai .notice {
+  background: #fff6df;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
 }
-section{padding:65px 7%}
-.title{text-align:center;margin-bottom:35px}
-.title h2{color:var(--navy);font-size:30px}
-.about{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
-  align-items:center;
-}
-.about img{
-  width:100%;
-  border-radius:18px;
-  height:300px;
-  object-fit:cover;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:22px;
-}
-.card{
-  background:white;
-  border-radius:15px;
-  overflow:hidden;
-  box-shadow:0 8px 25px #102b4615;
-}
-.card img{width:100%;height:165px;object-fit:cover}
-.card-content{padding:18px}
-.card h3{color:var(--navy)}
-.card p{color:#718397;font-size:14px}
-.feature{
-  background:#e8f5f4;
-  padding:35px;
-  border-radius:18px;
-  text-align:center;
-}
-.feature h2{color:var(--navy)}
-.contact{
-  background:var(--navy);
-  color:white;
-  text-align:center;
-}
-footer{
-  background:#091d30;
-  color:white;
-  text-align:center;
-  padding:25px;
-}
-footer strong{color:var(--teal)}
-.install-area{
-  text-align:center;
-  padding:20px;
-}
-.install-btn{
-  display:none;
-  border:0;
-  background:var(--teal);
-  color:white;
-  font-size:16px;
-  padding:13px 25px;
-  border-radius:10px;
-  cursor:pointer;
-}
-@media(max-width:700px){
-  header{justify-content:center}
-  nav{justify-content:center}
-  .hero{padding:55px 7%}
-  .hero h1{font-size:36px}
-  .about{grid-template-columns:1fr}
-}
+#taki-ai #message { white-space: pre-wrap; }
 </style>
-</head>
 
-<body>
-
-<header>
-  <div class="logo">
-    TAKI <span>CARE</span>
-    <small>360° HEALTH & REHABILITATION</small>
+<section id="taki-ai">
+  <div class="panel">
+    <h2>TAKI AI</h2>
+    <p>المساعد المهني للتقييم والتأهيل والمتابعة</p>
+    <p class="notice">
+      مساحة مهنية تجريبية. لا تدخلي بيانات مرضى حقيقية قبل
+      استكمال مراجعة الأمن والصلاحيات والامتثال القانوني.
+    </p>
   </div>
 
-  <nav>
-    <a href="#home" data-ar="الرئيسية" data-fr="Accueil" data-en="Home">الرئيسية</a>
-    <a href="#about" data-ar="من نحن" data-fr="À propos" data-en="About">من نحن</a>
-    <a href="#specialties" data-ar="التخصصات" data-fr="Spécialités" data-en="Specialties">التخصصات</a>
-    <a href="#training" data-ar="التكوين" data-fr="Formation" data-en="Training">التكوين</a>
-    <a href="#library" data-ar="المكتبة" data-fr="Bibliothèque" data-en="Library">المكتبة</a>
-    <a href="#contact" data-ar="اتصل بنا" data-fr="Contact" data-en="Contact">اتصل بنا</a>
-  </nav>
+  <div class="panel" id="auth-panel">
+    <h3>فضاء المختص</h3>
+    <label>البريد الإلكتروني</label>
+    <input id="email" type="email" autocomplete="email"
+      placeholder="Email">
 
-  <select id="language" aria-label="Language">
-    <option value="ar">العربية</option>
-    <option value="fr">Français</option>
-    <option value="en">English</option>
-  </select>
-</header>
+    <label>كلمة المرور</label>
+    <input id="password" type="password"
+      autocomplete="current-password" placeholder="Password">
 
-<section class="hero" id="home">
-  <div class="hero-content">
-    <h1>
-      TAKI CARE<br>
-      <span data-ar="رعاية، معرفة، وتأهيل"
-      data-fr="Soins, savoir et réadaptation"
-      data-en="Care, knowledge and rehabilitation">رعاية، معرفة، وتأهيل</span>
-    </h1>
-    <p data-ar="منصة علمية وتعليمية متخصصة في الصحة والطب والتأهيل والتكوين المهني."
-    data-fr="Une plateforme scientifique dédiée à la santé, à la médecine et à la réadaptation."
-    data-en="A scientific platform dedicated to health, medicine and rehabilitation.">
-    منصة علمية وتعليمية متخصصة في الصحة والطب والتأهيل والتكوين المهني.</p>
-    <a href="#specialties" class="btn"
-    data-ar="اكتشف تخصصاتنا" data-fr="Nos spécialités"
-    data-en="Explore specialties">اكتشف تخصصاتنا</a>
+    <button id="signup">إنشاء حساب</button>
+    <button id="login" class="secondary">تسجيل الدخول</button>
+    <p id="auth-message"></p>
   </div>
-</section>
 
-<section id="about">
-  <div class="about">
-    <div>
-      <h2 data-ar="مرحبًا بكم في TAKI CARE"
-      data-fr="Bienvenue chez TAKI CARE"
-      data-en="Welcome to TAKI CARE">مرحبًا بكم في TAKI CARE</h2>
-      <p data-ar="هدفنا نشر الثقافة الصحية وتوفير محتوى تعليمي في المجالات الطبية وشبه الطبية والتأهيل والتطوير المهني."
-      data-fr="Notre objectif est de diffuser la culture de santé et des ressources éducatives médicales."
-      data-en="Our goal is to promote health awareness and provide educational medical resources.">
-      هدفنا نشر الثقافة الصحية وتوفير محتوى تعليمي في المجالات الطبية وشبه الطبية والتأهيل والتطوير المهني.</p>
+  <div id="workspace" class="hidden">
+    <div class="panel">
+      <h3>مرحباً بك في فضائك المهني</h3>
+      <p id="user-email"></p>
+      <button id="logout" class="secondary">تسجيل الخروج</button>
     </div>
-    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900" alt="Healthcare">
+
+    <div class="panel">
+      <h3>إنشاء ملف مفحوص جديد</h3>
+
+      <label>رمز الملف (بدون اسم أو معلومات تعريفية)</label>
+      <input id="case-code" placeholder="مثال: TAKI-001">
+
+      <label>الفئة</label>
+      <select id="age-group">
+        <option value="child">طفل</option>
+        <option value="adult">بالغ</option>
+      </select>
+
+      <label>ملاحظات Anamnèse</label>
+      <textarea id="anamnesis"
+        placeholder="تاريخ الحالة، الشكوى، التطور، المعلومات السريرية..."></textarea>
+
+      <button id="save-patient">حفظ الملف والتقييم</button>
+      <p id="save-message"></p>
+    </div>
+
+    <div class="panel">
+      <h3>ملفات المفحوصين</h3>
+      <button id="refresh-patients" class="secondary">
+        تحديث القائمة
+      </button>
+      <div id="patient-list"></div>
+    </div>
   </div>
 </section>
 
-<section id="specialties">
-  <div class="title">
-    <h2 data-ar="مجالاتنا وتخصصاتنا"
-    data-fr="Nos spécialités" data-en="Our Specialties">مجالاتنا وتخصصاتنا</h2>
-    <p data-ar="معرفة متكاملة لخدمة الصحة والإنسان"
-    data-fr="Le savoir au service de la santé"
-    data-en="Knowledge serving health and people">معرفة متكاملة لخدمة الصحة والإنسان</p>
-  </div>
-
-  <div class="grid">
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=700" alt="Speech therapy">
-      <div class="card-content">
-        <h3 data-ar="الأرطوفونيا" data-fr="Orthophonie" data-en="Speech Therapy">الأرطوفونيا</h3>
-        <p data-ar="اللغة والنطق والصوت واضطرابات التواصل." data-fr="Langage, parole et communication." data-en="Language, speech and communication disorders.">اللغة والنطق والصوت واضطرابات التواصل.</p>
-      </div>
-    </article>
-
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700" alt="Rehabilitation">
-      <div class="card-content">
-        <h3 data-ar="التأهيل العصبي والمعرفي" data-fr="Réadaptation neurocognitive" data-en="Neurocognitive Rehabilitation">التأهيل العصبي والمعرفي</h3>
-        <p data-ar="دعم القدرات الحركية والمعرفية." data-fr="Soutien des fonctions motrices et cognitives." data-en="Supporting motor and cognitive abilities.">دعم القدرات الحركية والمعرفية.</p>
-      </div>
-    </article>
-
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=700" alt="Psychology">
-      <div class="card-content">
-        <h3 data-ar="علم النفس والسلوك" data-fr="Psychologie et comportement" data-en="Psychology and Behavior">علم النفس والسلوك</h3>
-        <p data-ar="الصحة النفسية والسلوك والتطور العاطفي." data-fr="Santé mentale et comportement." data-en="Mental health and behavior.">الصحة النفسية والسلوك والتطور العاطفي.</p>
-      </div>
-    </article>
-
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=700" alt="Nursing">
-      <div class="card-content">
-        <h3 data-ar="التمريض والرعاية السريرية" data-fr="Soins infirmiers" data-en="Nursing and Clinical Care">التمريض والرعاية السريرية</h3>
-        <p data-ar="الرعاية والوقاية ومرافقة المرضى." data-fr="Soins, prévention et accompagnement." data-en="Care, prevention and patient support.">الرعاية والوقاية ومرافقة المرضى.</p>
-      </div>
-    </article>
-
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1576091160501-bbe57469278b?w=700" alt="Medical rehabilitation">
-      <div class="card-content">
-        <h3 data-ar="إعادة التأهيل الطبي" data-fr="Réadaptation médicale" data-en="Medical Rehabilitation">إعادة التأهيل الطبي</h3>
-        <p data-ar="استعادة القدرات الوظيفية وتحسين جودة الحياة." data-fr="Récupération fonctionnelle et qualité de vie." data-en="Functional recovery and quality of life.">استعادة القدرات الوظيفية وتحسين جودة الحياة.</p>
-      </div>
-    </article>
-
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=700" alt="Training">
-      <div class="card-content">
-        <h3 data-ar="الأكاديمية المهنية" data-fr="Académie professionnelle" data-en="Professional Academy">الأكاديمية المهنية</h3>
-        <p data-ar="التعلم المستمر وتطوير المهارات المهنية." data-fr="Formation continue et compétences professionnelles." data-en="Continuing education and professional skills.">التعلم المستمر وتطوير المهارات المهنية.</p>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section id="training">
-  <div class="feature">
-    <h2 data-ar="التكوين والتعليم الطبي"
-    data-fr="Formation et éducation médicale"
-    data-en="Medical Training and Education">التكوين والتعليم الطبي</h2>
-    <p data-ar="مساحة للتعلم المستمر ومراجعة المعلومات العلمية وتطوير المهارات الصحية."
-    data-fr="Un espace pour l'apprentissage continu et le développement des compétences."
-    data-en="A space for continuous learning and healthcare skills development.">
-    مساحة للتعلم المستمر ومراجعة المعلومات العلمية وتطوير المهارات الصحية.</p>
-  </div>
-</section>
-
-<section id="library">
-  <div class="feature">
-    <h2 data-ar="المكتبة العلمية"
-    data-fr="Bibliothèque scientifique"
-    data-en="Scientific Library">المكتبة العلمية</h2>
-    <p data-ar="قريبًا: مقالات وملخصات ومراجع تعليمية لدعم المعرفة الصحية."
-    data-fr="Bientôt : articles, résumés et références éducatives."
-    data-en="Coming soon: articles, summaries and educational references.">
-    قريبًا: مقالات وملخصات ومراجع تعليمية لدعم المعرفة الصحية.</p>
-  </div>
-</section>
-
-<section class="contact" id="contact">
-  <h2 data-ar="معًا من أجل صحة ومعرفة أفضل"
-  data-fr="Ensemble pour une meilleure santé"
-  data-en="Together for better health">معًا من أجل صحة ومعرفة أفضل</h2>
-  <p>TAKI CARE — 360° HEALTH &amp; REHABILITATION</p>
-</section>
-
-<div class="install-area">
-  <button class="install-btn" id="installButton">
-    تثبيت تطبيق TAKI CARE
-  </button>
-</div>
-
-<footer>
-  © 2026 TAKI CARE — All rights reserved.
-  <br><strong>Created by TAKI SOMIA</strong>
-</footer>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const language = document.getElementById("language");
+(function () {
+  const SUPABASE_URL =
+    "https://uplrnpbtelciryfjgnsk.supabase.co";
 
-language.addEventListener("change", function(){
-  const lang = this.value;
-  document.documentElement.lang = lang;
-  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  // ضعي هنا Publishable Key الخاص بمشروع Supabase
+  const SUPABASE_KEY = "PASTE_YOUR_PUBLISHABLE_KEY_HERE";
 
-  document.querySelectorAll("[data-" + lang + "]").forEach(function(element){
-    element.textContent = element.getAttribute("data-" + lang);
+  const authPanel = document.getElementById("auth-panel");
+  const workspace = document.getElementById("workspace");
+  const authMessage = document.getElementById("auth-message");
+
+  if (!window.supabase ||
+      SUPABASE_KEY === "PASTE_YOUR_PUBLISHABLE_KEY_HERE") {
+    authMessage.textContent =
+      "يجب إضافة Publishable Key لإكمال الاتصال.";
+    return;
+  }
+
+  const db = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  const $ = id => document.getElementById(id);
+
+  async function showSession(session) {
+    const loggedIn = !!session;
+    authPanel.classList.toggle("hidden", loggedIn);
+    workspace.classList.toggle("hidden", !loggedIn);
+
+    if (loggedIn) {
+      $("user-email").textContent = session.user.email;
+      await loadPatients();
+    }
+  }
+
+  $("signup").onclick = async function () {
+    const { error } = await db.auth.signUp({
+      email: $("email").value.trim(),
+      password: $("password").value
+    });
+
+    authMessage.textContent = error
+      ? error.message
+      : "تم إنشاء الطلب. تحققي من بريدك الإلكتروني لتأكيد الحساب.";
+  };
+
+  $("login").onclick = async function () {
+    const { error } = await db.auth.signInWithPassword({
+      email: $("email").value.trim(),
+      password: $("password").value
+    });
+
+    authMessage.textContent = error
+      ? error.message
+      : "تم تسجيل الدخول.";
+  };
+
+  $("logout").onclick = async function () {
+    const { error } = await db.auth.signOut();
+    if (error) alert(error.message);
+  };
+
+  $("save-patient").onclick = async function () {
+    const message = $("save-message");
+    const caseCode = $("case-code").value.trim();
+    const notes = $("anamnesis").value.trim();
+
+    if (!caseCode) {
+      message.textContent = "أدخلي رمز الملف أولاً.";
+      return;
+    }
+
+    message.textContent = "جارٍ الحفظ...";
+
+    const { data: patient, error: patientError } =
+      await db.from("patients").insert({
+        case_code: caseCode,
+        age_group: $("age-group").value
+      }).select().single();
+
+    if (patientError) {
+      message.textContent = "تعذر حفظ الملف: " + patientError.message;
+      return;
+    }
+
+    if (notes) {
+      const { error: assessmentError } =
+        await db.from("assessments").insert({
+          patient_id: patient.id,
+          clinical_data: {
+            anamnesis: notes
+          }
+        });
+
+      if (assessmentError) {
+        message.textContent =
+          "تم حفظ الملف لكن تعذر حفظ التقييم: " +
+          assessmentError.message;
+        await loadPatients();
+        return;
+      }
+    }
+
+    message.textContent = "تم حفظ الملف بنجاح.";
+    $("case-code").value = "";
+    $("anamnesis").value = "";
+    await loadPatients();
+  };
+
+  async function loadPatients() {
+    const list = $("patient-list");
+    list.textContent = "جارٍ تحميل الملفات...";
+
+    const { data, error } = await db
+      .from("patients")
+      .select("id, case_code, age_group, created_at")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      list.textContent = "تعذر تحميل الملفات: " + error.message;
+      return;
+    }
+
+    list.replaceChildren();
+
+    if (!data || data.length === 0) {
+      list.textContent = "لا توجد ملفات حتى الآن.";
+      return;
+    }
+
+    data.forEach(patient => {
+      const item = document.createElement("div");
+      item.className = "patient-item";
+
+      const title = document.createElement("strong");
+      title.textContent = patient.case_code;
+
+      const details = document.createElement("p");
+      details.textContent =
+        (patient.age_group === "child" ? "طفل" : "بالغ") +
+        " — " +
+        new Date(patient.created_at).toLocaleDateString();
+
+      item.append(title, details);
+      list.appendChild(item);
+    });
+  }
+
+  $("refresh-patients").onclick = loadPatients;
+
+  db.auth.onAuthStateChange((event, session) => {
+    showSession(session);
   });
-});
 
-// تسجيل خدمة العمل دون اتصال
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function(){
-    navigator.serviceWorker.register("./sw.js")
-      .then(function(){
-        console.log("TAKI CARE service worker registered");
-      })
-      .catch(function(error){
-        console.error("Service worker error:", error);
-      });
+  db.auth.getSession().then(({ data }) => {
+    showSession(data.session);
   });
-}
-
-// زر تثبيت التطبيق
-let deferredPrompt;
-const installButton = document.getElementById("installButton");
-
-window.addEventListener("beforeinstallprompt", function(event){
-  event.preventDefault();
-  deferredPrompt = event;
-  installButton.style.display = "inline-block";
-});
-
-installButton.addEventListener("click", async function(){
-  if (!deferredPrompt) return;
-
-  deferredPrompt.prompt();
-  await deferredPrompt.userChoice;
-  deferredPrompt = null;
-  installButton.style.display = "none";
-});
-
-window.addEventListener("appinstalled", function(){
-  installButton.style.display = "none";
-});
+})();
 </script>
+<!-- End TAKI AI -->
 
-</body>
-</html>
+  
+        
