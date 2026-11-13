@@ -116,22 +116,24 @@
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
 (function () {
   const SUPABASE_URL =
     "https://uplrnpbtelciryfjgnsk.supabase.co";
 
-  // ضعي هنا Publishable Key الخاص بمشروع Supabase
-  const SUPABASE_KEY = "PASTE_YOUR_PUBLISHABLE_KEY_HERE";
+  const SUPABASE_KEY =
+    "sb_publishable_MpOqik1SWcq63khOem_unA_IA2eUL5i";
 
   const authPanel = document.getElementById("auth-panel");
   const workspace = document.getElementById("workspace");
   const authMessage = document.getElementById("auth-message");
 
-  if (!window.supabase ||
-      SUPABASE_KEY === "PASTE_YOUR_PUBLISHABLE_KEY_HERE") {
+  const $ = id => document.getElementById(id);
+
+  if (!window.supabase) {
     authMessage.textContent =
-      "يجب إضافة Publishable Key لإكمال الاتصال.";
+      "تعذر تحميل مكتبة Supabase. تحققي من الاتصال بالإنترنت.";
     return;
   }
 
@@ -140,10 +142,9 @@
     SUPABASE_KEY
   );
 
-  const $ = id => document.getElementById(id);
-
   async function showSession(session) {
     const loggedIn = !!session;
+
     authPanel.classList.toggle("hidden", loggedIn);
     workspace.classList.toggle("hidden", !loggedIn);
 
@@ -154,30 +155,37 @@
   }
 
   $("signup").onclick = async function () {
+    authMessage.textContent = "جارٍ إنشاء الحساب...";
+
     const { error } = await db.auth.signUp({
       email: $("email").value.trim(),
       password: $("password").value
     });
 
     authMessage.textContent = error
-      ? error.message
-      : "تم إنشاء الطلب. تحققي من بريدك الإلكتروني لتأكيد الحساب.";
+      ? "تعذر إنشاء الحساب: " + error.message
+      : "تم إرسال طلب إنشاء الحساب. تحققي من بريدك الإلكتروني.";
   };
 
   $("login").onclick = async function () {
+    authMessage.textContent = "جارٍ تسجيل الدخول...";
+
     const { error } = await db.auth.signInWithPassword({
       email: $("email").value.trim(),
       password: $("password").value
     });
 
     authMessage.textContent = error
-      ? error.message
+      ? "تعذر تسجيل الدخول: " + error.message
       : "تم تسجيل الدخول.";
   };
 
   $("logout").onclick = async function () {
     const { error } = await db.auth.signOut();
-    if (error) alert(error.message);
+
+    if (error) {
+      alert(error.message);
+    }
   };
 
   $("save-patient").onclick = async function () {
@@ -199,7 +207,8 @@
       }).select().single();
 
     if (patientError) {
-      message.textContent = "تعذر حفظ الملف: " + patientError.message;
+      message.textContent =
+        "تعذر حفظ الملف: " + patientError.message;
       return;
     }
 
@@ -216,6 +225,7 @@
         message.textContent =
           "تم حفظ الملف لكن تعذر حفظ التقييم: " +
           assessmentError.message;
+
         await loadPatients();
         return;
       }
@@ -224,6 +234,7 @@
     message.textContent = "تم حفظ الملف بنجاح.";
     $("case-code").value = "";
     $("anamnesis").value = "";
+
     await loadPatients();
   };
 
@@ -237,7 +248,8 @@
       .order("created_at", { ascending: false });
 
     if (error) {
-      list.textContent = "تعذر تحميل الملفات: " + error.message;
+      list.textContent =
+        "تعذر تحميل الملفات: " + error.message;
       return;
     }
 
@@ -279,5 +291,3 @@
 </script>
 <!-- End TAKI AI -->
 
-  
-        
