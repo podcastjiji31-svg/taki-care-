@@ -1,139 +1,313 @@
 
-<!-- TAKI AI - Professional Workspace -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAKI AI | فضاء المختص</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
-#taki-ai {
-  direction: rtl;
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #f1f6f9;
   font-family: Arial, sans-serif;
-  background: #f1f7fa;
-  padding: 35px 5%;
-  color: #17334b;
+  color: #183047;
 }
-#taki-ai .panel {
-  max-width: 950px;
-  margin: 20px auto;
-  padding: 25px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 5px 20px #102b4615;
+
+#taki-ai {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
 }
-#taki-ai h2, #taki-ai h3 { color: #102b46; }
-#taki-ai input, #taki-ai select, #taki-ai textarea {
-  width: 100%;
-  padding: 13px;
-  margin: 8px 0 15px;
-  border: 1px solid #ccd9e2;
-  border-radius: 8px;
-  font-size: 15px;
-  box-sizing: border-box;
-}
-#taki-ai textarea { min-height: 120px; }
-#taki-ai button {
-  background: #159e91;
+
+header {
+  background: linear-gradient(135deg,#123d59,#087f8c);
   color: white;
+  padding: 28px 20px;
+  border-radius: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 { margin: 0 0 10px; }
+header p { margin: 0; }
+
+.ta-card {
+  background: white;
+  border: 1px solid #dce6ed;
+  border-radius: 15px;
+  padding: 22px;
+  margin: 16px 0;
+  box-shadow: 0 4px 15px #17334a0b;
+}
+
+h2,h3 { color: #123d59; }
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 13px 0 6px;
+}
+
+input,select,textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccd9e2;
+  border-radius: 9px;
+  font-size: 15px;
+  background: white;
+}
+
+textarea {
+  min-height: 85px;
+  resize: vertical;
+}
+
+button {
   border: 0;
-  border-radius: 8px;
-  padding: 13px 20px;
+  border-radius: 9px;
+  padding: 12px 20px;
+  margin: 8px 4px;
   cursor: pointer;
-  margin: 5px;
+  font-weight: bold;
+  background: #087f8c;
+  color: white;
 }
-#taki-ai button.secondary { background: #173b59; }
-#taki-ai .patient-item {
-  padding: 15px;
-  border: 1px solid #dce7ed;
-  border-radius: 10px;
-  margin: 10px 0;
+
+button.secondary { background: #24465d; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+
+.ta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 12px;
 }
-#taki-ai .hidden { display: none; }
-#taki-ai .notice {
-  background: #fff6df;
+
+.ta-section {
+  border-top: 1px solid #e3ebef;
+  padding-top: 12px;
+  margin-top: 18px;
+}
+
+.ta-message {
   padding: 12px;
   border-radius: 8px;
+  margin-top: 12px;
+  overflow-wrap: anywhere;
+}
+
+.ta-error { background: #fff0ed; color: #a52d20; }
+.ta-success { background: #e9f8ef; color: #176b3b; }
+
+.ta-patient {
+  padding: 14px;
+  border-bottom: 1px solid #e4ebef;
+}
+
+.ta-muted { color: #647987; font-size: 13px; }
+
+[hidden] { display: none !important; }
+
+footer {
+  text-align: center;
+  color: #647987;
+  padding: 20px;
   font-size: 13px;
 }
-#taki-ai #message { white-space: pre-wrap; }
 </style>
+</head>
 
-<section id="taki-ai">
-  <div class="panel">
-    <h2>TAKI AI</h2>
-    <p>المساعد المهني للتقييم والتأهيل والمتابعة</p>
-    <p class="notice">
-      مساحة مهنية تجريبية. لا تدخلي بيانات مرضى حقيقية قبل
-      استكمال مراجعة الأمن والصلاحيات والامتثال القانوني.
-    </p>
-  </div>
+<body>
+<div id="taki-ai">
 
-  <div class="panel" id="auth-panel">
-    <h3>فضاء المختص</h3>
-    <label>البريد الإلكتروني</label>
-    <input id="email" type="email" autocomplete="email"
-      placeholder="Email">
+<header>
+  <h1>TAKI AI</h1>
+  <p>المساعد المهني للتقييم والتأهيل والمتابعة</p>
+  <p>فضاء المختصين — الأطفال والبالغون</p>
+</header>
 
-    <label>كلمة المرور</label>
-    <input id="password" type="password"
-      autocomplete="current-password" placeholder="Password">
+<section id="auth-panel" class="ta-card">
+  <h2>دخول المختص</h2>
 
-    <button id="signup">إنشاء حساب</button>
-    <button id="login" class="secondary">تسجيل الدخول</button>
-    <p id="auth-message"></p>
-  </div>
+  <label for="taki-email">البريد الإلكتروني</label>
+  <input id="taki-email" type="email" autocomplete="email">
 
-  <div id="workspace" class="hidden">
-    <div class="panel">
-      <h3>مرحباً بك في فضائك المهني</h3>
-      <p id="user-email"></p>
-      <button id="logout" class="secondary">تسجيل الخروج</button>
-    </div>
+  <label for="taki-password">كلمة المرور</label>
+  <input id="taki-password" type="password"
+         autocomplete="current-password">
 
-    <div class="panel">
-      <h3>إنشاء ملف مفحوص جديد</h3>
+  <button id="taki-login" type="button">تسجيل الدخول</button>
+  <button id="taki-signup" type="button" class="secondary">
+    إنشاء حساب
+  </button>
 
-      <label>رمز الملف (بدون اسم أو معلومات تعريفية)</label>
-      <input id="case-code" placeholder="مثال: TAKI-001">
-
-      <label>الفئة</label>
-      <select id="age-group">
-        <option value="child">طفل</option>
-        <option value="adult">بالغ</option>
-      </select>
-
-      <label>ملاحظات Anamnèse</label>
-      <textarea id="anamnesis"
-        placeholder="تاريخ الحالة، الشكوى، التطور، المعلومات السريرية..."></textarea>
-
-      <button id="save-patient">حفظ الملف والتقييم</button>
-      <p id="save-message"></p>
-    </div>
-
-    <div class="panel">
-      <h3>ملفات المفحوصين</h3>
-      <button id="refresh-patients" class="secondary">
-        تحديث القائمة
-      </button>
-      <div id="patient-list"></div>
-    </div>
-  </div>
+  <div id="taki-auth-message" aria-live="polite"></div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<section id="taki-workspace" hidden>
+
+  <div class="ta-card">
+    <h2>مرحباً بك في فضائك المهني</h2>
+    <p>الحساب: <strong id="taki-user-email"></strong></p>
+    <button id="taki-logout" class="secondary" type="button">
+      تسجيل الخروج
+    </button>
+  </div>
+
+  <form id="taki-patient-form" class="ta-card">
+    <h2>إنشاء ملف وتقييم جديد</h2>
+
+    <div class="ta-grid">
+      <div>
+        <label for="taki-case-code">رمز الملف دون اسم المريض</label>
+        <input id="taki-case-code" required maxlength="50"
+               placeholder="مثال: TAKI-002">
+      </div>
+
+      <div>
+        <label for="taki-age-group">الفئة</label>
+        <select id="taki-age-group" required>
+          <option value="child">طفل</option>
+          <option value="adult">بالغ</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="ta-section">
+      <h3>المعلومات العامة — Anamnèse</h3>
+
+      <label>سبب الاستشارة</label>
+      <textarea data-field="reason"></textarea>
+
+      <label>تاريخ الحالة وبداية الصعوبات</label>
+      <textarea data-field="history"></textarea>
+
+      <label>نقاط القوة والقدرات</label>
+      <textarea data-field="strengths"></textarea>
+
+      <label>الصعوبات والاحتياجات الحالية</label>
+      <textarea data-field="needs"></textarea>
+    </div>
+
+    <div id="taki-child-fields">
+      <div class="ta-section">
+        <h3>تقييم الطفل</h3>
+
+        <label>الحمل والولادة</label>
+        <textarea data-field="pregnancy_birth"></textarea>
+
+        <label>التطور الحركي</label>
+        <textarea data-field="motor_development"></textarea>
+
+        <label>تطور اللغة والتواصل</label>
+        <textarea data-field="language_development"></textarea>
+
+        <label>الفهم والاستيعاب</label>
+        <textarea data-field="comprehension"></textarea>
+
+        <label>التعبير الشفهي واللغوي</label>
+        <textarea data-field="expression"></textarea>
+
+        <label>النطق والأصوات</label>
+        <textarea data-field="speech_sounds"></textarea>
+
+        <label>الانتباه والذاكرة</label>
+        <textarea data-field="attention_memory"></textarea>
+
+        <label>السلوك والتفاعل الاجتماعي</label>
+        <textarea data-field="behavior_social"></textarea>
+
+        <label>الأسرة والبيئة المدرسية</label>
+        <textarea data-field="family_school"></textarea>
+
+        <label>الاختبارات والملاحظات</label>
+        <textarea data-field="child_tests"></textarea>
+      </div>
+    </div>
+
+    <div id="taki-adult-fields" hidden>
+      <div class="ta-section">
+        <h3>تقييم البالغ</h3>
+
+        <label>التاريخ الطبي والجراحي</label>
+        <textarea data-field="medical_history"></textarea>
+
+        <label>التاريخ العصبي</label>
+        <textarea data-field="neurological_history"></textarea>
+
+        <label>اللغة والكلام والصوت</label>
+        <textarea data-field="language_speech_voice"></textarea>
+
+        <label>البلع</label>
+        <textarea data-field="swallowing"></textarea>
+
+        <label>الذاكرة والانتباه والوظائف التنفيذية</label>
+        <textarea data-field="cognitive_functions"></textarea>
+
+        <label>الاستقلالية والتواصل اليومي</label>
+        <textarea data-field="daily_life_communication"></textarea>
+
+        <label>الاختبارات والملاحظات</label>
+        <textarea data-field="adult_tests"></textarea>
+      </div>
+    </div>
+
+    <div class="ta-section">
+      <h3>التقييم الأولي وخطة المتابعة</h3>
+
+      <label>الملاحظات السريرية للمختص</label>
+      <textarea data-field="clinical_observations"></textarea>
+
+      <label>الأهداف الأولية المقترحة</label>
+      <textarea data-field="initial_goals"></textarea>
+
+      <label>ملاحظات إضافية</label>
+      <textarea data-field="additional_notes"></textarea>
+    </div>
+
+    <button id="taki-save-patient" type="submit">
+      حفظ الملف والتقييم
+    </button>
+
+    <div id="taki-save-message" aria-live="polite"></div>
+  </form>
+
+  <div class="ta-card">
+    <h3>ملفات المفحوصين</h3>
+    <button id="taki-refresh-patients" type="button"
+            class="secondary">
+      تحديث القائمة
+    </button>
+    <div id="taki-patient-list"></div>
+  </div>
+
+</section>
+
+<footer>
+  TAKI AI — نسخة تجريبية مهنية
+  <br>
+  لا تدخلي بيانات مرضى حقيقية قبل استكمال مراجعة الأمن والصلاحيات.
+</footer>
+
+</div>
 
 <script>
 (function () {
+  "use strict";
+
   const SUPABASE_URL =
     "https://uplrnpbtelciryfjgnsk.supabase.co";
 
   const SUPABASE_KEY =
     "sb_publishable_MpOqik1SWcq63khOem_unA_IA2eUL5i";
 
-  const authPanel = document.getElementById("auth-panel");
-  const workspace = document.getElementById("workspace");
-  const authMessage = document.getElementById("auth-message");
-
-  const $ = id => document.getElementById(id);
+  const root = document.getElementById("taki-ai");
 
   if (!window.supabase) {
-    authMessage.textContent =
-      "تعذر تحميل مكتبة Supabase. تحققي من الاتصال بالإنترنت.";
+    alert("تعذر تحميل مكتبة الاتصال. تحققي من الإنترنت.");
     return;
   }
 
@@ -142,104 +316,134 @@
     SUPABASE_KEY
   );
 
-  async function showSession(session) {
-    const loggedIn = !!session;
+  const $ = id => document.getElementById(id);
 
-    authPanel.classList.toggle("hidden", loggedIn);
-    workspace.classList.toggle("hidden", !loggedIn);
+  const authPanel = $("auth-panel");
+  const workspace = $("taki-workspace");
+  const authMessage = $("taki-auth-message");
+  const saveMessage = $("taki-save-message");
+  const patientForm = $("taki-patient-form");
+  const saveButton = $("taki-save-patient");
 
-    if (loggedIn) {
-      $("user-email").textContent = session.user.email;
-      await loadPatients();
-    }
+  let currentUser = null;
+
+  function showMessage(element, message, isError) {
+    element.textContent = message;
+    element.className =
+      "ta-message " + (isError ? "ta-error" : "ta-success");
   }
 
-  $("signup").onclick = async function () {
-    authMessage.textContent = "جارٍ إنشاء الحساب...";
+  function clearMessage(element) {
+    element.textContent = "";
+    element.className = "";
+  }
 
-    const { error } = await db.auth.signUp({
-      email: $("email").value.trim(),
-      password: $("password").value
-    });
+  function showWorkspace(user) {
+    currentUser = user || null;
 
-    authMessage.textContent = error
-      ? "تعذر إنشاء الحساب: " + error.message
-      : "تم إرسال طلب إنشاء الحساب. تحققي من بريدك الإلكتروني.";
-  };
+    authPanel.hidden = !!user;
+    workspace.hidden = !user;
 
-  $("login").onclick = async function () {
-    authMessage.textContent = "جارٍ تسجيل الدخول...";
+    $("taki-user-email").textContent =
+      user ? (user.email || "") : "";
 
-    const { error } = await db.auth.signInWithPassword({
-      email: $("email").value.trim(),
-      password: $("password").value
-    });
+    if (user) loadPatients();
+  }
 
-    authMessage.textContent = error
-      ? "تعذر تسجيل الدخول: " + error.message
-      : "تم تسجيل الدخول.";
-  };
+  function updateAgeFields() {
+    const type = $("taki-age-group").value;
+    $("taki-child-fields").hidden = type !== "child";
+    $("taki-adult-fields").hidden = type !== "adult";
+  }
 
-  $("logout").onclick = async function () {
+  $("taki-age-group").addEventListener(
+    "change", updateAgeFields
+  );
+
+  updateAgeFields();
+
+  $("taki-signup").addEventListener("click", async function () {
+    clearMessage(authMessage);
+
+    const email = $("taki-email").value.trim();
+    const password = $("taki-password").value;
+
+    if (!email || password.length < 6) {
+      showMessage(
+        authMessage,
+        "أدخلي بريداً إلكترونياً وكلمة مرور من 6 أحرف على الأقل.",
+        true
+      );
+      return;
+    }
+
+    $("taki-signup").disabled = true;
+
+    try {
+      const { data, error } = await db.auth.signUp({
+        email,
+        password
+      });
+
+      if (error) throw error;
+
+      if (data.session) {
+        showMessage(authMessage, "تم إنشاء الحساب بنجاح.", false);
+      } else {
+        showMessage(
+          authMessage,
+          "تم إنشاء الحساب. افتحي بريدك لتأكيده ثم سجّلي الدخول.",
+          false
+        );
+      }
+    } catch (error) {
+      showMessage(authMessage, error.message, true);
+    } finally {
+      $("taki-signup").disabled = false;
+    }
+  });
+
+  $("taki-login").addEventListener("click", async function () {
+    clearMessage(authMessage);
+
+    const email = $("taki-email").value.trim();
+    const password = $("taki-password").value;
+
+    if (!email || !password) {
+      showMessage(
+        authMessage,
+        "أدخلي البريد الإلكتروني وكلمة المرور.",
+        true
+      );
+      return;
+    }
+
+    $("taki-login").disabled = true;
+
+    try {
+      const { error } = await db.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (error) throw error;
+    } catch (error) {
+      showMessage(authMessage, error.message, true);
+    } finally {
+      $("taki-login").disabled = false;
+    }
+  });
+
+  $("taki-logout").addEventListener("click", async function () {
     const { error } = await db.auth.signOut();
 
     if (error) {
-      alert(error.message);
+      showMessage(authMessage, error.message, true);
     }
-  };
-
-  $("save-patient").onclick = async function () {
-    const message = $("save-message");
-    const caseCode = $("case-code").value.trim();
-    const notes = $("anamnesis").value.trim();
-
-    if (!caseCode) {
-      message.textContent = "أدخلي رمز الملف أولاً.";
-      return;
-    }
-
-    message.textContent = "جارٍ الحفظ...";
-
-    const { data: patient, error: patientError } =
-      await db.from("patients").insert({
-        case_code: caseCode,
-        age_group: $("age-group").value
-      }).select().single();
-
-    if (patientError) {
-      message.textContent =
-        "تعذر حفظ الملف: " + patientError.message;
-      return;
-    }
-
-    if (notes) {
-      const { error: assessmentError } =
-        await db.from("assessments").insert({
-          patient_id: patient.id,
-          clinical_data: {
-            anamnesis: notes
-          }
-        });
-
-      if (assessmentError) {
-        message.textContent =
-          "تم حفظ الملف لكن تعذر حفظ التقييم: " +
-          assessmentError.message;
-
-        await loadPatients();
-        return;
-      }
-    }
-
-    message.textContent = "تم حفظ الملف بنجاح.";
-    $("case-code").value = "";
-    $("anamnesis").value = "";
-
-    await loadPatients();
-  };
+  });
 
   async function loadPatients() {
-    const list = $("patient-list");
+    const list = $("taki-patient-list");
     list.textContent = "جارٍ تحميل الملفات...";
 
     const { data, error } = await db
@@ -256,37 +460,129 @@
     list.replaceChildren();
 
     if (!data || data.length === 0) {
-      list.textContent = "لا توجد ملفات حتى الآن.";
+      list.textContent = "لا توجد ملفات محفوظة حتى الآن.";
       return;
     }
 
-    data.forEach(patient => {
+    data.forEach(function (patient) {
       const item = document.createElement("div");
-      item.className = "patient-item";
+      item.className = "ta-patient";
 
       const title = document.createElement("strong");
       title.textContent = patient.case_code;
 
       const details = document.createElement("p");
-      details.textContent =
-        (patient.age_group === "child" ? "طفل" : "بالغ") +
-        " — " +
-        new Date(patient.created_at).toLocaleDateString();
+      details.className = "ta-muted";
 
-      item.append(title, details);
+      const age =
+        patient.age_group === "child" ? "طفل" : "بالغ";
+
+      const date = patient.created_at
+        ? new Date(patient.created_at).toLocaleDateString("ar")
+        : "";
+
+      details.textContent = age + " — " + date;
+
+      item.appendChild(title);
+      item.appendChild(details);
       list.appendChild(item);
     });
   }
 
-  $("refresh-patients").onclick = loadPatients;
+  $("taki-refresh-patients").addEventListener(
+    "click", loadPatients
+  );
 
-  db.auth.onAuthStateChange((event, session) => {
-    showSession(session);
+  patientForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    clearMessage(saveMessage);
+
+    if (!currentUser) {
+      showMessage(saveMessage, "يجب تسجيل الدخول أولاً.", true);
+      return;
+    }
+
+    const caseCode = $("taki-case-code").value.trim();
+    const ageGroup = $("taki-age-group").value;
+
+    if (!caseCode) {
+      showMessage(saveMessage, "أدخلي رمز الملف أولاً.", true);
+      return;
+    }
+
+    const clinicalData = {};
+
+    root.querySelectorAll("[data-field]").forEach(function (field) {
+      clinicalData[field.dataset.field] = field.value.trim();
+    });
+
+    saveButton.disabled = true;
+    saveButton.textContent = "جارٍ الحفظ...";
+
+    try {
+      const { data: patient, error: patientError } = await db
+        .from("patients")
+        .insert({
+          case_code: caseCode,
+          age_group: ageGroup
+        })
+        .select()
+        .single();
+
+      if (patientError) throw patientError;
+
+      const { error: assessmentError } = await db
+        .from("assessments")
+        .insert({
+          patient_id: patient.id,
+          clinical_data: clinicalData
+        });
+
+      if (assessmentError) {
+        throw new Error(
+          "تم إنشاء الملف الأساسي لكن لم يتم حفظ التقييم: " +
+          assessmentError.message
+        );
+      }
+
+      showMessage(
+        saveMessage,
+        "تم حفظ الملف والتقييم بنجاح.",
+        false
+      );
+
+      patientForm.reset();
+      updateAgeFields();
+      await loadPatients();
+
+    } catch (error) {
+      showMessage(
+        saveMessage,
+        "تعذر الحفظ: " + error.message,
+        true
+      );
+    } finally {
+      saveButton.disabled = false;
+      saveButton.textContent = "حفظ الملف والتقييم";
+    }
   });
 
-  db.auth.getSession().then(({ data }) => {
-    showSession(data.session);
+  db.auth.onAuthStateChange(function (event, session) {
+    showWorkspace(session ? session.user : null);
   });
+
+  db.auth.getSession().then(function (result) {
+    if (result.error) {
+      showMessage(authMessage, result.error.message, true);
+      return;
+    }
+
+    showWorkspace(
+      result.data.session ? result.data.session.user : null
+    );
+  });
+
 })();
 </script>
-<!-- End TAKI AI -->
+</body>
+</html>
